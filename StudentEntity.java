@@ -1,7 +1,14 @@
-package com.webapp.request;
+package com.webapp.entity;
 
-public class RequestData {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="student")
+public class StudentEntity {
 	
+	@Id
 	private int id;
 	
 	private String name;
@@ -12,11 +19,11 @@ public class RequestData {
 	
 	private String village;
 	
-	public RequestData() {
+	public StudentEntity() {
 		
 	}
 
-	public RequestData(int id, String name, double marks, long mobileno, String village) {
+	public StudentEntity(int id, String name, double marks, long mobileno, String village) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -64,6 +71,5 @@ public class RequestData {
 	public void setVillage(String village) {
 		this.village = village;
 	}
-	
 
 }
