@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.webapp.dto.ResponseData;
 import com.webapp.request.RequestData;
 import com.webapp.service.StudentService;
+
 
 @RestController
 @RequestMapping("/student")
@@ -52,5 +54,12 @@ public class StudentController {
 		ResponseEntity<String> response = new ResponseEntity<>(result, header, HttpStatusCode.valueOf(200));
 		
 		return response;
+	}
+	
+	
+	@GetMapping("/all")
+	public ResponseData  anotherData(){
+		
+		return service.getAllData();
 	}
 }

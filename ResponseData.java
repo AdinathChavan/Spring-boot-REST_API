@@ -1,34 +1,18 @@
-package com.webapp.request;
+package com.webapp.dto;
 
-public class UserRequest {
+public class ResponseData {
 	
-	
-	
-	public UserRequest(int id, String name, double salary, String city, String mobileno, int pincode) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.salary = salary;
-		this.city = city;
-		this.mobileno = mobileno;
-		this.pincode = pincode;
-	}
-	
-	public UserRequest() {
-		
-	}
-
 	private int id;
 	
 	private String name;
 	
-	private double salary;
-	
-	private String city;
-	
-	private String mobileno;
-	
-	private int pincode;
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -36,14 +20,6 @@ public class UserRequest {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public double getSalary() {
@@ -77,9 +53,13 @@ public class UserRequest {
 	public void setPincode(int pincode) {
 		this.pincode = pincode;
 	}
+
+	private double salary;
 	
+	private String city;
 	
+	private String mobileno;
 	
-	
+	private int pincode;
 
 }
