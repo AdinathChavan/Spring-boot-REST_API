@@ -1,0 +1,25 @@
+{
+         "orderId":124,
+         "mobileno":9307685722,
+         "email":"adi@gmail.com",
+         "ProductRequest":{
+                        "prize":8392,
+                        "quantity":1,
+                        "specification":[
+                            "2 gb RAM",
+                            "128 gb ROM"
+                        ]
+                    },
+
+        "AddressRequest":{
+            "landmark":"Dattawad-Kl",
+            "homeno":839,
+            "pincode":416107,
+            "city":"Kolhapur"
+        },
+
+        "PaymentDetailsRequest":{
+            "paymentStatus":"Done"
+        }
+
+}
