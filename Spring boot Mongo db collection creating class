@@ -1,0 +1,88 @@
+package com.agri.entity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.agri.dto.LandDTO;
+
+@Document(collection="Farmer")
+public class Farmer {
+	
+	@Id
+	private String farmerId;
+	private String name;
+	private String mobile;
+	private String village;
+	private long password;
+	
+	private List<LandDTO> land;
+	
+	public Farmer() {
+		
+	}
+	
+	public String getId() {
+		return farmerId;
+	}
+	public void setId(String id) {
+		this.farmerId = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	public String getVillage() {
+		return village;
+	}
+	public void setVillage(String village) {
+		this.village = village;
+	}
+	public long getPassword() {
+		return password;
+	}
+	public void setPassword(long password) {
+		this.password = password;
+	}
+	
+	public List<LandDTO> getLand() {
+		return land;
+	}
+
+	public void setLand(List<LandDTO> land) {
+		this.land = land;
+	}
+	
+	public void addLand(LandDTO newLand) {
+
+	    if (this.land == null) {
+	        this.land = new ArrayList<>();
+	    }
+
+	    this.land.add(newLand);
+	}
+
+	public Farmer( String name, String mobile, String village, long password) {
+		super();
+		this.name = name;
+		this.mobile = mobile;
+		this.village = village;
+		this.password = password;
+	}
+	
+	
+	
+	
+	
+
+}
