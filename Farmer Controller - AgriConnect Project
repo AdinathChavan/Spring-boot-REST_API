@@ -1,0 +1,121 @@
+package com.agri.controller;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.agri.dto.ApplyDTO;
+import com.agri.dto.BudgetDTO;
+import com.agri.dto.FarmerDTO;
+import com.agri.dto.GetBudgetDTO;
+import com.agri.dto.LandDTO;
+import com.agri.dto.LoginDTO;
+import com.agri.dto.ProfileDTO;
+import com.agri.dto.TransactionDTO;
+import com.agri.service.FarmerService;
+
+import jakarta.servlet.http.HttpServletRequest;
+
+@RestController
+@RequestMapping("/farmer")
+public class FarmerController {
+	
+	@Autowired
+	FarmerService service;
+	
+	
+	@PostMapping("/register")
+	public ResponseEntity<?> createAccount(@RequestBody FarmerDTO one){
+		return service.createAccount(one);
+	}
+	
+	@PostMapping("/login")
+	public ResponseEntity<?> login(@RequestBody LoginDTO login){
+		return service.login(login);
+	} 
+	
+	@PostMapping("/land-details")
+	public ResponseEntity<?> landDetails( @RequestBody LandDTO land){
+		
+         return  service.landDetails(land);
+	}
+	
+	@GetMapping("/land-records/{id}")
+	public ResponseEntity<?> getRecords(@PathVariable String id){
+		return service.getRecords(id);  
+	}
+	
+	@GetMapping("/landrecord-count")
+	public ResponseEntity<?> getCountOfLand(HttpServletRequest request){
+		String id = (String) request.getAttribute("userId");
+		return service.getCountOfLand(id);
+	}
+	
+	
+	
+	@GetMapping("/all-schemes")
+	public ResponseEntity<?> getAllSchemes(){
+		return service.getAllSchemes();
+	}
+	
+	@PostMapping("/apply-scheme")
+	public ResponseEntity<?> apply(@RequestBody ApplyDTO dto){
+		System.out.println(dto.getIncome());
+		return service.apply(dto);
+	}
+
+	@GetMapping("/application/{id}")
+	public ResponseEntity<?> getById(@PathVariable String id){
+		return service.getById(id);
+	} 
+	
+	@PostMapping("/complete-profile")
+	public ResponseEntity<?> completeProfile(@RequestBody ProfileDTO profile){
+		 return service.completeProfile(profile);
+	}
+	
+	@GetMapping("/profile")
+	public ResponseEntity<?> profile(HttpServletRequest request){
+		String id = (String) request.getAttribute("userId");
+		
+		return service.profile(id);
+	}
+	
+	@GetMapping("/total-schemes")
+	public ResponseEntity<?> count(){
+		return service.getCount();
+	}
+	
+	@GetMapping("/applied")
+	public ResponseEntity<?> countOfApplied(HttpServletRequest request){
+		String id = (String) request.getAttribute("userId");
+		return service.appliedCount(id);
+	}
+	
+	//expense tracking
+	@PostMapping("/add-budget")
+	public ResponseEntity<?> createBudget(@RequestBody BudgetDTO dto){
+		return service.createBudget(dto);
+	}
+	 
+	@PostMapping("/add-transaction/{budgetId}")
+	public ResponseEntity<?> addTransaction( @PathVariable String budgetId ,  @RequestBody TransactionDTO dto){
+		return service.createTransaction( budgetId,  dto);
+	}
+	
+	@PostMapping("/get-budget")
+	public ResponseEntity<?> getBudget(@RequestBody GetBudgetDTO dto){
+		return service.createBudget(dto); 
+	}
+	
+	@GetMapping("/get-transactions/{id}")
+	public ResponseEntity<?> getTransactions(@PathVariable String id){
+		return service.getAllTransactions(id); 
+	}
+}
